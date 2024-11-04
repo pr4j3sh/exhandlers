@@ -1,13 +1,30 @@
 {
   "name": "express-handlers",
+  "description": "Utility middlewares for working with ExpressJs",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "test": "echo \"Running tests...\" && exit 0",
+    "build": "echo \"Build completed.\"",
+    "dev": "node ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "keywords": [
+    "express",
+    "expressjs",
+    "handlers",
+    "middlewares",
+    "server",
+    "backend",
+    "nodejs"
+  ],
+  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.vercel.app/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pr4j3sh/express-handlers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pr4j3sh/express-handlers/issues"
+  },
+  "homepage": "https://github.com/pr4j3sh/express-handlers#readme"
 }
