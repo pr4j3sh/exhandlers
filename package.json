@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/pr4j3sh/exhandlers/issues"
   },
-  "homepage": "https://github.com/pr4j3sh/exhandlers#readme"
+  "homepage": "https://github.com/pr4j3sh/exhandlers#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }

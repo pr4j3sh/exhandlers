@@ -1,17 +1,13 @@
-const asyncHandler = (fn) => (req, res, next) => {
-  Promise.resolve(fn(req, res, next)).catch(next);
+const asyncHandler = require("./src/async.handler");
+const corsHandler = require("./src/cors.handler");
+const errorHandler = require("./src/error.handler");
+const logHandler = require("./src/log.handler");
+const notFoundHandler = require("./src/notFound.handler");
+
+module.exports = {
+  asyncHandler,
+  errorHandler,
+  corsHandler,
+  logHandler,
+  notFoundHandler,
 };
-
-const errorHandler = (err, req, res, next) => {
-  console.error(err.stack);
-
-  const status = err.status || 500;
-  const message = err.message || "Internal server error";
-
-  res.status(status).json({
-    success: false,
-    message,
-  });
-};
-
-module.exports = { asyncHandler, errorHandler };
