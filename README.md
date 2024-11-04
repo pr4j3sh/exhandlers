@@ -14,7 +14,7 @@ A simple middleware package for Express applications.
 You can install **express-handlers** using npm:
 
 ```bash
-npm install express-handlers
+npm install @pr4j3sh/express-handlers
 ```
 
 ## Usage

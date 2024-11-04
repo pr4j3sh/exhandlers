@@ -1,5 +1,5 @@
 {
-  "name": "express-handlers",
+  "name": "@pr4j3sh/express-handlers",
   "description": "Utility middlewares for working with ExpressJs",
   "version": "1.0.0",
   "main": "index.js",
