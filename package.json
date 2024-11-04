@@ -1,5 +1,5 @@
 {
-  "name": "@pr4j3sh/express-handlers",
+  "name": "exhandlers",
   "description": "Utility middlewares for working with ExpressJs",
   "version": "1.0.0",
   "main": "index.js",
@@ -21,10 +21,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pr4j3sh/express-handlers.git"
+    "url": "git+https://github.com/pr4j3sh/exhandlers.git"
   },
   "bugs": {
-    "url": "https://github.com/pr4j3sh/express-handlers/issues"
+    "url": "https://github.com/pr4j3sh/exhandlers/issues"
   },
-  "homepage": "https://github.com/pr4j3sh/express-handlers#readme"
+  "homepage": "https://github.com/pr4j3sh/exhandlers#readme"
 }

@@ -11,10 +11,10 @@ A simple middleware package for Express applications.
 
 ## Installation
 
-You can install **express-handlers** using npm:
+You can install **exhandlers** using npm:
 
 ```bash
-npm install @pr4j3sh/express-handlers
+npm install exhandlers
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ The `asyncHandler` function allows you to wrap your async route handlers and aut
 
 ```javascript
 const express = require("express");
-const { asyncHandler, errorHandler } = require("express-handlers");
+const { asyncHandler, errorHandler } = require("exhandlers");
 
 const app = express();
 
