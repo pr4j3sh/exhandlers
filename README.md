@@ -22,6 +22,8 @@ npm install exhandlers
 
 ## Usage
 
+Contents of your entry point file would look like this
+
 ```js
 const express = require("express");
 const {
@@ -145,7 +147,7 @@ const { notFoundHandler } = require("exhandlers");
 app.use(notFoundHandler); // Place this after all route definitions, above errorHandler
 ```
 
-This sends a 404 status with a JSON message like `{ message: "Resource not found" }`.
+> This sends a 404 status with a JSON message like `{ message: "Resource not found" }`.
 
 ## License
 
