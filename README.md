@@ -102,7 +102,7 @@ ALLOWED_ORIGINS="http://localhost:5000, http://localhost:8000"
 ```javascript
 const { corsHandler } = require("exhandlers");
 
-app.use(corsHandler()); // Enable CORS for allowed routes
+app.use(corsHandler()); // Put this right after intializing express
 
 // other middlewares and routes
 ```
@@ -116,7 +116,7 @@ const { errorHandler } = require("exhandlers");
 
 // other routes
 
-app.use(errorHandler); // Use the error handler at the end of your routes
+app.use(errorHandler); // Use the error handler at the end of your routes, below notFoundHandler
 ```
 
 ### Log Handler
@@ -126,11 +126,11 @@ The `logHandler` logs each incoming request's method, URL, and timestamp, making
 ```javascript
 const { logHandler } = require("exhandlers");
 
-app.use(logHandler); // Use at the beginning of your middleware stack
+app.use(logHandler); // Use at the beginning of your routes
 
 // other routes
 
-// Example Output: [2024-11-05] GET /api/data
+// Example Output: [11/05/2024, 12:51:28] GET /api/data
 ```
 
 ### Not Found Handler
@@ -142,10 +142,10 @@ const { notFoundHandler } = require("exhandlers");
 
 // other routes
 
-app.use(notFoundHandler); // Place this after all route definitions
+app.use(notFoundHandler); // Place this after all route definitions, above errorHandler
 ```
 
-This sends a 404 status with a JSON message like `{ message: "Route Not Found" }`.
+This sends a 404 status with a JSON message like `{ message: "Resource not found" }`.
 
 ## License
 
