@@ -6,11 +6,11 @@ A simple middleware package for Express applications.
 
 ## Handlers
 
-- [Async Handler](#async-handler)
-- [CORS Handler](#cors-handler)
-- [Error Handler](#error-handler)
-- [Log Handler](#log-handler)
-- [Not Found Handler](#not-found-handler)
+- Async Handler
+- CORS Handler
+- Error Handler
+- Log Handler
+- Not Found Handler
 
 ## Installation
 
