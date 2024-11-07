@@ -11,6 +11,7 @@ A simple middleware package for Express applications.
 - Error Handler
 - Log Handler
 - Not Found Handler
+- Hash Handler
 - Password Handler
 
 ## Installation
