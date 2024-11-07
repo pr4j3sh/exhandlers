@@ -11,6 +11,7 @@ A simple middleware package for Express applications.
 - Error Handler
 - Log Handler
 - Not Found Handler
+- Password Handler
 
 ## Installation
 
@@ -32,7 +33,10 @@ const {
   logHandler,
   notFoundHandler,
   corsHandler,
+  passwordHandler,
+  hashHandler,
 } = require("exhandlers");
+const User = require("path/to/userModel");
 
 const app = express();
 
@@ -51,10 +55,33 @@ app.get(
   }),
 );
 
-// Define a test route
-app.get("/api/test", (req, res) => {
-  res.send("Test route working!");
-});
+// Use hashHandler to hash password
+app.post(
+  "/api/auth/register",
+  asyncHandler(async (req, res) => {
+    const { password } = req.body;
+
+    const hashedPassword = await hashHandler(password);
+  }),
+);
+
+// Use passwordHandler to compare passwords
+app.post(
+  "/api/auth/login",
+  asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    const hashedPassword = user.password;
+
+    const passwordMatch = await passwordHandler(password, hashedPassword);
+
+    if (!passwordMatch) {
+      throw new Error("Invalid credentials");
+    }
+  }),
+);
 
 // Use Not Found handler for undefined routes
 app.use(notFoundHandler);

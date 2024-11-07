@@ -7,6 +7,8 @@
 - [Error Handler](#error-handler)
 - [Log Handler](#log-handler)
 - [Not Found Handler](#not-found-handler)
+- [Hash Handler](#hash-handler)
+- [Password Handler](#password-handler)
 
 ## Usage
 
@@ -84,3 +86,50 @@ app.use(notFoundHandler); // Place this after all route definitions, above error
 ```
 
 > This sends a 404 status with a JSON message like `{ message: "Resource not found" }`.
+
+### Hash Handler
+
+This handler is asynchronous and requires `password` as an argument and returns `hashedPassword`
+
+```js
+const { hashHandler, asyncHandler } = require("exhandlers");
+
+app.post(
+  "/api/auth/register",
+  asyncHandler(async (req, res) => {
+    const { password } = req.body;
+
+    const hashedPassword = await hashHandler(password);
+  }),
+);
+```
+
+> It uses [bcrypt]() npm package to hash passwords.
+
+### Password Handler
+
+This handler is asynchronous and requires `password` and `hashedPassword` as arguments and returns a boolean `passwordMatch` to check if passwords match.
+
+```js
+const { passwordHandler, asyncHandler } = require("exhandlers");
+const User = require("path/to/userModel");
+
+app.post(
+  "/api/auth/login",
+  asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    const hashedPassword = user.password;
+
+    const passwordMatch = await passwordHandler(password, hashedPassword);
+
+    if (!passwordMatch) {
+      throw new Error("Invalid credentials");
+    }
+  }),
+);
+```
+
+> It uses [bcrypt]() npm package to compare passwords.
