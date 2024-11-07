@@ -47,6 +47,8 @@ app.use(corsHandler()); // Put this right after intializing express
 // other middlewares and routes
 ```
 
+> Uses [cors](https://www.npmjs.com/package/cors) npm package
+
 ### Error Handler
 
 The `errorHandler` function is a simple error middleware that logs the error stack and sends a standardized JSON response.
@@ -104,7 +106,7 @@ app.post(
 );
 ```
 
-> It uses [bcrypt]() npm package to hash passwords.
+> It uses [bcrypt](https://www.npmjs.com/package/bcrypt) npm package to hash passwords.
 
 ### Password Handler
 
@@ -132,4 +134,4 @@ app.post(
 );
 ```
 
-> It uses [bcrypt]() npm package to compare passwords.
+> It uses [bcrypt](https://www.npmjs.com/package/bcrypt) npm package to compare passwords.
