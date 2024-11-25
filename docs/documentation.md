@@ -33,16 +33,12 @@ app.get(
 
 ### CORS Handler
 
-A `corsHandler` middleware to handle CORS in your application, allowing requests from specific origins. In a `.env` file put allowed origins as comma separated values in a string variable names `"ALLOWED_ORIGINS"`
-
-```.env
-ALLOWED_ORIGINS="http://localhost:5000, http://localhost:8000"
-```
+A `corsHandler` middleware to handle CORS in your application, allowing requests from specific origins. In takes comma separated string of urls
 
 ```javascript
 const { corsHandler } = require("exhandlers");
 
-app.use(corsHandler()); // Put this right after intializing express
+app.use(corsHandler("http://localhost:3000, http://127.0.0.1:4321")); // Put this right after intializing express
 
 // other middlewares and routes
 ```
@@ -63,17 +59,17 @@ app.use(errorHandler); // Use the error handler at the end of your routes, below
 
 ### Log Handler
 
-The `logHandler` logs each incoming request's method, URL, and timestamp, making it easy to trace requests in development or production.
+The `logHandler` logs each incoming request's method, URL, and timestamp, making it easy to trace requests in development or production. By default the mode is set to `combined`.
 
 ```javascript
 const { logHandler } = require("exhandlers");
 
-app.use(logHandler); // Use at the beginning of your routes
+app.use(logHandler()); // Use at the beginning of your routes
 
 // other routes
-
-// Example Output: [11/05/2024, 12:51:28] GET /api/data
 ```
+
+> Uses [morgan](https://www.npmjs.com/package/morgan) npm package.
 
 ### Not Found Handler
 

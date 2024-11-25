@@ -42,10 +42,10 @@ const User = require("path/to/userModel");
 const app = express();
 
 // Use CORS handler
-app.use(corsHandler());
+app.use(corsHandler("http://localhost:3000, http://127.0.0.1:4321"));
 
 // Use logging middleware
-app.use(logHandler);
+app.use(logHandler());
 
 // Define routes with asyncHandler
 app.get(
@@ -95,12 +95,6 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 ```
-
-```.env
-ALLOWED_ORIGINS="http://localhost:5000, http://localhost:8000"
-```
-
-> for `corsHandler`
 
 ## Documentation
 
