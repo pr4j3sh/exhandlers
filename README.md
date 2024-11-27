@@ -13,6 +13,7 @@ A simple middleware package for Express applications.
 - Not Found Handler
 - Hash Handler
 - Password Handler
+- MongoDB Handler
 
 ## Installation
 
@@ -36,6 +37,7 @@ const {
   corsHandler,
   passwordHandler,
   hashHandler,
+  mongoHandler,
 } = require("exhandlers");
 const User = require("path/to/userModel");
 
@@ -90,9 +92,15 @@ app.use(notFoundHandler);
 // Use error handler at the end of the middleware stack
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
+
+// Use mongoHandler to connect to mongodb database
+mongoHandler(
+  "mongodb://<username>:<password>@<host>:<port>/<database>?options",
+);
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running @ port ${PORT}`);
 });
 ```
 

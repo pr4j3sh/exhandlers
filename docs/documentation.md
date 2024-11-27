@@ -9,6 +9,7 @@
 - [Not Found Handler](#not-found-handler)
 - [Hash Handler](#hash-handler)
 - [Password Handler](#password-handler)
+- [MongoDB Handler](#mongo-handler)
 
 ## Usage
 
@@ -131,3 +132,19 @@ app.post(
 ```
 
 > It uses [bcrypt](https://www.npmjs.com/package/bcrypt) npm package to compare passwords.
+
+### MongoDB Handler
+
+The `mongoHandler` takes `MongoDB URI` as an argument and connects to MongoDB.
+
+```javascript
+const { mongoHandler } = require("exhandlers");
+
+// other code
+
+mongoHandler(
+  "mongodb://<username>:<password>@<host>:<port>/<database>?options",
+); // Place this above server.listen()
+```
+
+> It uses [mongoose](https://www.npmjs.com/package/mongoose) npm package to connect to MongoDB database.
