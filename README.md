@@ -106,7 +106,9 @@ mongoHandler(
 );
 // or
 // Use postgresHandler to connect to postgres database
-postgresHandler("postgres://<user>:<password>@<host>:<port>/<database>");
+const pool = postgresHandler(
+  "postgres://<user>:<password>@<host>:<port>/<database>",
+);
 
 app.listen(PORT, () => {
   console.log(`Server running @ port ${PORT}`);
