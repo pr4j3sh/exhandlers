@@ -1,8 +1,12 @@
 # Express Handlers
 
-> Utility Middlewares for working with ExpressJs
+> Utility Middlewares for working with Express.js
 
 A simple middleware package for Express applications.
+
+## Documentation
+
+[Exhandlers Documentation](/docs/documentation.md)
 
 ## Handlers
 
@@ -14,6 +18,7 @@ A simple middleware package for Express applications.
 - Hash Handler
 - Password Handler
 - MongoDB Handler
+- Postgres Handler
 
 ## Installation
 
@@ -38,6 +43,7 @@ const {
   passwordHandler,
   hashHandler,
   mongoHandler,
+  postgresHandler,
 } = require("exhandlers");
 const User = require("path/to/userModel");
 
@@ -98,15 +104,14 @@ const PORT = 3000;
 mongoHandler(
   "mongodb://<username>:<password>@<host>:<port>/<database>?options",
 );
+// or
+// Use postgresHandler to connect to postgres database
+postgresHandler("postgres://<user>:<password>@<host>:<port>/<database>");
 
 app.listen(PORT, () => {
   console.log(`Server running @ port ${PORT}`);
 });
 ```
-
-## Documentation
-
-[Read more](/docs/documentation.md)
 
 ## License
 

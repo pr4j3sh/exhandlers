@@ -10,6 +10,7 @@
 - [Hash Handler](#hash-handler)
 - [Password Handler](#password-handler)
 - [MongoDB Handler](#mongo-handler)
+- [Postgres Handler](#postgres-handler)
 
 ## Usage
 
@@ -148,3 +149,17 @@ mongoHandler(
 ```
 
 > It uses [mongoose](https://www.npmjs.com/package/mongoose) npm package to connect to MongoDB database.
+
+### Postgres Handler
+
+The `postgresHandler` takes `Postgres URI` as an argument and connects to Postgres.
+
+```javascript
+const { postgresHandler } = require("exhandlers");
+
+// other code
+
+postgresHandler("postgres://<user>:<password>@<host>:<port>/<database>"); // Place this above server.listen()
+```
+
+> It uses [pg](https://www.npmjs.com/package/pg) npm package to connect to Postgres database.
