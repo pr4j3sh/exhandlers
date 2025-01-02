@@ -19,6 +19,7 @@ A simple middleware package for Express applications.
 - Password Handler
 - MongoDB Handler
 - Postgres Handler
+- Redis Handler
 
 ## Installation
 
@@ -44,6 +45,7 @@ const {
   hashHandler,
   mongoHandler,
   initPostgres,
+  redisHandler,
 } = require("exhandlers");
 const User = require("path/to/userModel");
 
@@ -109,6 +111,9 @@ mongoHandler(
 const pool = initPostgres(
   "postgres://<user>:<password>@<host>:<port>/<database>",
 );
+
+// Use redisHandler to connect with redis
+const client = redisHandler("redis://<user>:<password>@<host>:<port>");
 
 app.listen(PORT, () => {
   console.log(`Server running @ port ${PORT}`);

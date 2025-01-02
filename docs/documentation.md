@@ -11,6 +11,7 @@
 - [Password Handler](#password-handler)
 - [MongoDB Handler](#mongo-handler)
 - [Postgres Handler](#postgres-handler)
+- [Redis Handler](#redis-handler)
 
 ## Usage
 
@@ -152,7 +153,7 @@ mongoHandler(
 
 ### Postgres Handler
 
-The `postgresHandler` takes `Postgres URI` as an argument and connects to Postgres.
+The `initPostgres` takes `Postgres URI` as an argument and connects to Postgres while returning `pool`. The `postgresHandler` takes `pool, text, values, callback` as arguments to perform the query.
 
 ```javascript
 const { initPostgres, postgresHandler } = require("exhandlers");
@@ -172,3 +173,38 @@ async function getUsers(id) {
 ```
 
 > It uses [pg](https://www.npmjs.com/package/pg) npm package to connect to Postgres database.
+
+### Redis Handler
+
+The `redisHandler` takes `REDIS_URI` to connect to Redis and returns `client`.
+
+```js
+const { redisHandler } = require("exhandlers");
+
+const client = redisHandler("redis://<user>:<password>@<host>:<port>");
+
+async function getUsers(id) {
+  await client.connect();
+
+  // Check if the user data exists in Redis
+  const cachedData = await client.get(`user:${id}`);
+  if (cachedData) {
+    console.log("Returning cached data from Redis");
+    await client.disconnect();
+    return JSON.parse(cachedData);
+  }
+
+  // Fetch from PostgreSQL if not cached
+  const result = await postgresHandler(
+    pool,
+    "SELECT * FROM users WHERE id = $1",
+    [id],
+  );
+
+  // Set the data in Redis for future use
+  await client.set(`user:${id}`, JSON.stringify(result.rows));
+
+  await client.disconnect();
+  return result.rows;
+}
+```
