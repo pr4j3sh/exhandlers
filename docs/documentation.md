@@ -176,7 +176,7 @@ async function getUsers(id) {
 
 ### Redis Handler
 
-The `redisHandler` takes `REDIS_URI` to connect to Redis and returns `client`.
+The `initRedis` takes `REDIS_URI` to connect to Redis and returns `client`. The `redisHandler` takes `client` and connects to redis server. The `disconnectRedis` function can be used to disconnect from redis server.
 
 ```js
 const { initRedis, redisHandler, disconnectRedis } = require("exhandlers");
