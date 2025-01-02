@@ -208,3 +208,5 @@ async function getUsers(id) {
   return result.rows;
 }
 ```
+
+> It uses [redis](https://www.npmjs.com/package/redis) npm package to connect to redis.
