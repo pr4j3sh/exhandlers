@@ -114,7 +114,7 @@ const pool = initPostgres(
   "postgres://<user>:<password>@<host>:<port>/<database>",
 );
 
-// Use redisHandler to connect with redis
+// Use initRedis to connect with redis
 const client = initRedis("redis://<user>:<password>@<host>:<port>");
 
 app.listen(PORT, async () => {
