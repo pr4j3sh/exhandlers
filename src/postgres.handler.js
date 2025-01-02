@@ -9,7 +9,17 @@ function initPostgres(uri) {
   const pool = new Pool({
     connectionString: uri,
   });
-  console.log("connected to postgres");
+
+  pool
+    .connect()
+    .then(() => {
+      console.log("connected to postgres");
+    })
+    .catch((error) => {
+      console.error(error.message);
+      exit(1);
+    });
+
   return pool;
 }
 
