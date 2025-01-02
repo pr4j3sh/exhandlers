@@ -179,16 +179,14 @@ async function getUsers(id) {
 The `redisHandler` takes `REDIS_URI` to connect to Redis and returns `client`.
 
 ```js
-const { redisHandler } = require("exhandlers");
+const { initRedis, redisHandler, disconnectRedis } = require("exhandlers");
 
-const client = redisHandler("redis://<user>:<password>@<host>:<port>");
+const client = initRedis("redis://<user>:<password>@<host>:<port>");
 
 async function getUsers(id) {
-  await client.connect();
-
   // Check if the user data exists in Redis
-  const cachedData = await client.get(`user:${id}`);
-  if (cachedData) {
+  const cache = await client.get(`user:${id}`);
+  if (cache) {
     console.log("Returning cached data from Redis");
     await client.disconnect();
     return JSON.parse(cachedData);
@@ -204,9 +202,15 @@ async function getUsers(id) {
   // Set the data in Redis for future use
   await client.set(`user:${id}`, JSON.stringify(result.rows));
 
-  await client.disconnect();
   return result.rows;
 }
+
+app.listen(PORT, async () => {
+  await redisHandler(client);
+  console.log(`Server running @ port ${PORT}`);
+});
+
+disconnectRedis(client);
 ```
 
 > It uses [redis](https://www.npmjs.com/package/redis) npm package to connect to redis.

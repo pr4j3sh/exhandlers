@@ -6,7 +6,11 @@ const mongoHandler = require("./src/mongo.handler");
 const notFoundHandler = require("./src/notFound.handler");
 const { passwordHandler, hashHandler } = require("./src/password.handler");
 const { postgresHandler, initPostgres } = require("./src/postgres.handler");
-const redisHandler = require("./src/redis.handler");
+const {
+  redisHandler,
+  initRedis,
+  disconnectRedis,
+} = require("./src/redis.handler");
 
 module.exports = {
   asyncHandler,
@@ -19,5 +23,7 @@ module.exports = {
   mongoHandler,
   initPostgres,
   postgresHandler,
+  initRedis,
   redisHandler,
+  disconnectRedis,
 };
