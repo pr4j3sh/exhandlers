@@ -1,4 +1,4 @@
-const { exit, on } = require("process");
+const { exit } = require("process");
 const { createClient } = require("redis");
 
 function initRedis(uri) {
@@ -21,7 +21,7 @@ async function redisHandler(client) {
 }
 
 function disconnectRedis(client) {
-  on("SIGINT", async () => {
+  process.on("SIGINT", async () => {
     await client.disconnect();
     console.log("disconnected redis");
     exit(0);
