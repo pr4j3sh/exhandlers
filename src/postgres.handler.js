@@ -1,10 +1,20 @@
+const { exit } = require("process");
 const { Pool } = require("pg");
 
-async function postgresHandler(uri) {
+function initPostgres(uri) {
+  if (!uri) {
+    console.error("URI not found");
+    exit(1);
+  }
   const pool = new Pool({
     connectionString: uri,
   });
+  console.log("connected to database");
   return pool;
 }
 
-module.exports = postgresHandler;
+async function postgresHandler(pool, text, params, callback) {
+  return pool.query(text, params, callback);
+}
+
+module.exports = { initPostgres, postgresHandler };

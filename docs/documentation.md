@@ -155,20 +155,20 @@ mongoHandler(
 The `postgresHandler` takes `Postgres URI` as an argument and connects to Postgres.
 
 ```javascript
-const { postgresHandler } = require("exhandlers");
+const { initPostgres, postgresHandler } = require("exhandlers");
 
-const pool = postgresHandler(
+const pool = initPostgres(
   "postgres://<user>:<password>@<host>:<port>/<database>",
 );
 
-(async () => {
-  try {
-    const result = await pool.query("SELECT * FROM users"); // Automatically uses a pooled connection
-    console.log(result.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-})();
+async function getUsers(id) {
+  const result = await postgresHandler(
+    pool,
+    "SELECT * FROM users WHERE id = $1",
+    [id],
+  );
+  return result.rows;
+}
 ```
 
 > It uses [pg](https://www.npmjs.com/package/pg) npm package to connect to Postgres database.

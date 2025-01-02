@@ -43,7 +43,7 @@ const {
   passwordHandler,
   hashHandler,
   mongoHandler,
-  postgresHandler,
+  initPostgres,
 } = require("exhandlers");
 const User = require("path/to/userModel");
 
@@ -105,8 +105,8 @@ mongoHandler(
   "mongodb://<username>:<password>@<host>:<port>/<database>?options",
 );
 // or
-// Use postgresHandler to connect to postgres database
-const pool = postgresHandler(
+// Use initPostgres to connect to postgres database and postgresHandler to make queries
+const pool = initPostgres(
   "postgres://<user>:<password>@<host>:<port>/<database>",
 );
 
