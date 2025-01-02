@@ -7,6 +7,7 @@ function redisHandler(uri) {
     exit(1);
   }
   const client = createClient({ url: uri });
+  console.log("connected to redis");
   return client;
 }
 
