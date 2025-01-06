@@ -22,8 +22,12 @@ async function redisHandler(client) {
 
 function disconnectRedis(client) {
   process.on("SIGINT", async () => {
-    await client.disconnect();
-    console.log("disconnected redis");
+    try {
+      await client.disconnect();
+      console.log("disconnected redis");
+    } catch (error) {
+      console.error(error.message);
+    }
     exit(0);
   });
 }
