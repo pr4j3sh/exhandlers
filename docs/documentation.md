@@ -153,14 +153,14 @@ mongoHandler(
 
 ### Postgres Handler
 
-The `initPostgres` takes `Postgres URI` as an argument and connects to Postgres while returning `pool`. The `postgresHandler` takes `pool, text, values, callback` as arguments to perform the query.
+The `initPostgres` takes an object with parameters such as `connectionString` which takes `POSTGRES_URI` as an argument and connects to Postgres while returning `pool`. The `postgresHandler` takes `pool, text, values, callback` as arguments to perform the query.
 
 ```javascript
 const { initPostgres, postgresHandler } = require("exhandlers");
 
-const pool = initPostgres(
-  "postgres://<user>:<password>@<host>:<port>/<database>",
-);
+const pool = initPostgres({
+  connectionString: "postgres://<user>:<password>@<host>:<port>/<database>",
+});
 
 async function getUsers(id) {
   const result = await postgresHandler(
@@ -176,12 +176,12 @@ async function getUsers(id) {
 
 ### Redis Handler
 
-The `initRedis` takes `REDIS_URI` to connect to Redis and returns `client`. The `redisHandler` takes `client` and connects to redis server. The `disconnectRedis` function can be used to disconnect from redis server.
+The `initRedis` takes an object with parameters such as `url` which contains `REDIS_URI` to connect to Redis and returns `client`.
 
 ```js
-const { initRedis, redisHandler, disconnectRedis } = require("exhandlers");
+const { initRedis } = require("exhandlers");
 
-const client = initRedis("redis://<user>:<password>@<host>:<port>");
+const client = initRedis({ url: "redis://<user>:<password>@<host>:<port>" });
 
 async function getUsers(id) {
   // Check if the user data exists in Redis
@@ -204,13 +204,6 @@ async function getUsers(id) {
 
   return result.rows;
 }
-
-app.listen(PORT, async () => {
-  await redisHandler(client);
-  console.log(`Server running @ port ${PORT}`);
-});
-
-disconnectRedis(client);
 ```
 
 > It uses [redis](https://www.npmjs.com/package/redis) npm package to connect to redis.

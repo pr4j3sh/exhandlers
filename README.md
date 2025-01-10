@@ -46,8 +46,6 @@ const {
   mongoHandler,
   initPostgres,
   initRedis,
-  redisHandler,
-  disconnectRedis,
 } = require("exhandlers");
 const User = require("path/to/userModel");
 
@@ -110,19 +108,16 @@ mongoHandler(
 );
 // or
 // Use initPostgres to connect to postgres database and postgresHandler to make queries
-const pool = initPostgres(
-  "postgres://<user>:<password>@<host>:<port>/<database>",
-);
-
-// Use initRedis to connect with redis
-const client = initRedis("redis://<user>:<password>@<host>:<port>");
-
-app.listen(PORT, async () => {
-  await redisHandler(client);
-  console.log(`Server running @ port ${PORT}`);
+const pool = initPostgres({
+  connectionString: "postgres://<user>:<password>@<host>:<port>/<database>",
 });
 
-disconnectRedis(client);
+// Use initRedis to connect with redis
+const client = initRedis({ url: "redis://<user>:<password>@<host>:<port>" });
+
+app.listen(PORT, async () => {
+  console.log(`Server running @ port ${PORT}`);
+});
 ```
 
 ## License

@@ -1,14 +1,12 @@
 const { exit } = require("process");
 const { Pool } = require("pg");
 
-function initPostgres(uri) {
-  if (!uri) {
-    console.error("URI not found");
+function initPostgres(config) {
+  if (!config?.connectionString) {
+    console.error("postgres URI not found");
     exit(1);
   }
-  const pool = new Pool({
-    connectionString: uri,
-  });
+  const pool = new Pool(config);
 
   pool
     .connect()

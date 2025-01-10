@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 async function mongoHandler(uri) {
   if (!uri) {
-    console.error("URI not found");
+    console.error("mongodb URI not found");
     exit(1);
   }
   try {
