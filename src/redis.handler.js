@@ -8,14 +8,13 @@ function initRedis(config) {
   }
   const client = createClient(config);
 
-  client.on("connect", () => {
-    console.log("connected to redis");
-  });
-
-  client.on("error", (error) => {
-    console.error(error.message);
-    exit(1);
-  });
+  client
+    .connect()
+    .then(() => console.log("connected to redis"))
+    .catch((error) => {
+      console.error(error);
+      exit(1);
+    });
 
   return client;
 }
