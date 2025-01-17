@@ -65,14 +65,21 @@ app.use(errorHandler); // Use the error handler at the end of your routes, below
 The `logHandler` logs each incoming request's method, URL, and timestamp, making it easy to trace requests in development or production. By default the mode is set to `combined`.
 
 ```javascript
-const { logHandler } = require("exhandlers");
+const {
+  transports,
+  initLogger,
+  streamHandler,
+  logHandler,
+} = require("exhandlers");
 
-app.use(logHandler()); // Use at the beginning of your routes
+const logger = initLogger({ level: "info", transports });
+
+app.use(logHandler("combined", { stream: streamHandler(logger) })); // Use at the beginning of your routes
 
 // other routes
 ```
 
-> Uses [morgan](https://www.npmjs.com/package/morgan) npm package.
+> Uses [winston](https://www.npmjs.com/package/winston) and [morgan](https://www.npmjs.com/package/morgan) npm package.
 
 ### Not Found Handler
 

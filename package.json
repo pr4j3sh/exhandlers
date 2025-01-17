@@ -1,7 +1,7 @@
 {
   "name": "exhandlers",
   "description": "Utility middlewares for working with ExpressJs",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "main": "dist/bundle.js",
   "scripts": {
     "test": "echo \"Running tests...\" && exit 0",
@@ -36,7 +36,8 @@
     "mongoose": "^8.8.3",
     "morgan": "^1.10.0",
     "pg": "^8.13.1",
-    "redis": "^4.7.0"
+    "redis": "^4.7.0",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "esbuild": "^0.24.0"

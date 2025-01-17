@@ -46,6 +46,9 @@ const {
   mongoHandler,
   initPostgres,
   initRedis,
+  transports,
+  initLogger,
+  streamHandler,
 } = require("exhandlers");
 const User = require("path/to/userModel");
 
@@ -54,8 +57,9 @@ const app = express();
 // Use CORS handler
 app.use(corsHandler("http://localhost:3000, http://127.0.0.1:4321"));
 
+const logger = initLogger({ transports });
 // Use logging middleware
-app.use(logHandler());
+app.use(logHandler("combined", { stream: streamHandler(logger) }));
 
 // Define routes with asyncHandler
 app.get(
