@@ -1,7 +1,7 @@
 {
   "name": "exhandlers",
   "description": "Utility middlewares for working with ExpressJs",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "main": "dist/bundle.js",
   "scripts": {
     "test": "echo \"Running tests...\" && exit 0",
@@ -20,7 +20,7 @@
     "backend",
     "nodejs"
   ],
-  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.vercel.app/)",
+  "author": "Prajesh Pratap Singh <prajesh.eleven118@gmail.com> (https://pr4j3sh.github.io/pr4j3sh/)",
   "license": "MIT",
   "repository": {
     "type": "git",
