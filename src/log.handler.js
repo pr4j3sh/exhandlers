@@ -19,10 +19,11 @@ const transports = [
   }),
 ];
 
-const initLogger = ({ level = "info", transports }) => {
+const initLogger = (level = "info", transports = [], args = {}) => {
   const logger = winston.createLogger({
     level,
     transports,
+    ...args,
   });
   return logger;
 };

@@ -41,7 +41,18 @@ A `corsHandler` middleware to handle CORS in your application, allowing requests
 ```javascript
 const { corsHandler } = require("exhandlers");
 
-app.use(corsHandler("http://localhost:3000, http://127.0.0.1:4321")); // Put this right after intializing express
+// Put this right after intializing express
+
+app.use(corsHandler()); // default cors options
+
+// or
+
+app.use(
+  corsHandler("http://localhost:3000, http://127.0.0.1:4321", {
+    optionsSuccessStatus: 200,
+    // other cors options
+  }),
+);
 
 // other middlewares and routes
 ```
@@ -57,7 +68,8 @@ const { errorHandler } = require("exhandlers");
 
 // other routes
 
-app.use(errorHandler); // Use the error handler at the end of your routes, below notFoundHandler
+// Use the error handler at the end of your routes, below notFoundHandler
+app.use(errorHandler);
 ```
 
 ### Log Handler
