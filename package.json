@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Running tests...\" && exit 0",
     "build": "node esbuild.config.js",
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "docs": "./node_modules/.bin/jsdoc ./src/* -d docs/"
   },
   "files": [
     "dist"
