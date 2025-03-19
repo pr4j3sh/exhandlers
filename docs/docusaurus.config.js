@@ -110,6 +110,10 @@ const config = {
                 label: "GitHub",
                 href: "https://github.com/pr4j3sh/exhandlers",
               },
+              {
+                label: "pr4j3sh",
+                href: "https://pr4j3sh.github.io/pr4j3sh/",
+              },
             ],
           },
         ],
