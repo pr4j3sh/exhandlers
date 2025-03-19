@@ -12,8 +12,10 @@
  *   @see {@link https://expressjs.com/en/guide/error-handling.html}
  *
  * @example
+ * ```js
  * const app = express();
  * app.use(notFoundHandler);
+ * ```
  */
 const notFoundHandler = (req, res, next) => {
   const status = 404;

@@ -1,0 +1,28 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function errorHandler(err: Object, req: Object, res: Object, next: function)
+```
+
+<div>
+
+</div>
+
+Logs the error stack and sends a JSON response with the error message and status code.<br />  See the official express package documentation for more details:
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|err|Object|||The error object.|
+|req|Object|||Express request object.|
+|res|Object|||Express response object.|
+|next|function|||Express next function.|
+
+**See**:
+- [https://expressjs.com/en/guide/error-handling.html](https://expressjs.com/en/guide/error-handling.html)
+```js
+const app = express();
+app.use(errorHandler);
+```
+

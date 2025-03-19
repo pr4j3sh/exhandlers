@@ -1,128 +1,97 @@
-# Express Handlers
+# exhandlers
 
-> Utility Middlewares for working with Express.js
+`exhandlers` is a comprehensive collection of middleware and handler functions designed to streamline backend development in Express.js. It provides pre-built utilities for handling databases, WebSocket connections, AMQP connections, logging, and various other essential middleware functionalities.
 
-A simple middleware package for Express applications.
+By integrating `exhandlers`, developers can eliminate the need to write common handlers from scratch, thereby reducing development overhead and ensuring a cleaner, more maintainable codebase.
 
 ## Documentation
 
-[Exhandlers Documentation](/docs/documentation.md)
+[exhandlers Documentation]()
 
-## Handlers
+## Available Handlers
 
-- Async Handler
-- CORS Handler
-- Error Handler
-- Log Handler
-- Not Found Handler
-- Hash Handler
-- Password Handler
-- MongoDB Handler
-- Postgres Handler
-- Redis Handler
+### Core Middleware
+
+- **Asynchronous Handler** – Simplifies error handling in async functions.
+- **Authentication Handler** – Manages authentication and authorization mechanisms.
+- **CORS Handler** – Configures Cross-Origin Resource Sharing (CORS) policies.
+- **Error Handler** – Centralized error handling middleware.
+- **Not Found Handler** – Handles 404 (Not Found) errors.
+- **Logs Handler** – Structured logging for application monitoring.
+- **Rate Limiting Handler** – Protects APIs from excessive requests.
+- **Password Handler** – Utility functions for password hashing and validation.
+
+### Database Handlers
+
+- **MongoDB Handler** – Provides a streamlined connection and query interface for MongoDB.
+- **PostgreSQL Handler** – Manages PostgreSQL database connections and queries.
+- **Redis Handler** – Integrates Redis for caching and session management.
+
+### Additional Handlers
+
+- **Upload Handler** – Manages file uploads efficiently.
+- **Socket Handler** – Handles WebSocket connections for real-time data exchange.
+- **AMQP Handler** – Facilitates message queue communication using AMQP (e.g., RabbitMQ).
 
 ## Installation
 
-You can install **exhandlers** using npm:
+To integrate `exhandlers` into your project, install the package using npm:
 
-```bash
+```sh
 npm install exhandlers
 ```
 
-## Usage
+# Usage
 
-Contents of your entry point file would look like this
+To use `exhandlers` in your Express application, import the required handlers using `require`.
 
 ```js
-const express = require("express");
 const {
   asyncHandler,
   errorHandler,
-  logHandler,
   notFoundHandler,
   corsHandler,
-  passwordHandler,
-  hashHandler,
-  mongoHandler,
-  initPostgres,
-  initRedis,
-  transports,
-  initLogger,
-  streamHandler,
+  rateLimitHandler,
 } = require("exhandlers");
-const User = require("path/to/userModel");
+
+const express = require("express");
 
 const app = express();
 
-// Use CORS handler
-app.use(corsHandler("http://localhost:3000, http://127.0.0.1:4321"));
+// Apply CORS middleware
+app.use(corsHandler());
 
-const logger = initLogger({ transports });
-// Use logging middleware
-app.use(logHandler("combined", { stream: streamHandler(logger) }));
+// Apply rate limiting middleware
+app.use(rateLimitHandler({ windowMs: 15 * 60 * 1000, limit: 100 })); // 100 requests per 15 minutes
 
-// Define routes with asyncHandler
+// Define an asynchronous route using asyncHandler
 app.get(
-  "/api/data",
+  "/data",
   asyncHandler(async (req, res) => {
-    const data = await fetchData(); // Replace with your async logic
-    res.json(data);
+    const data = await fetchDataFromDB(); // Simulated database call
+    res.json({ success: true, data });
   }),
 );
 
-// Use hashHandler to hash password
-app.post(
-  "/api/auth/register",
-  asyncHandler(async (req, res) => {
-    const { password } = req.body;
+// Handle 404 errors
+app.use(notFoundHandler());
 
-    const hashedPassword = await hashHandler(password);
-  }),
-);
+// Centralized error handling middleware
+app.use(errorHandler());
 
-// Use passwordHandler to compare passwords
-app.post(
-  "/api/auth/login",
-  asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
-
-    const user = await User.findOne({ email });
-
-    const hashedPassword = user.password;
-
-    const passwordMatch = await passwordHandler(password, hashedPassword);
-
-    if (!passwordMatch) {
-      throw new Error("Invalid credentials");
-    }
-  }),
-);
-
-// Use Not Found handler for undefined routes
-app.use(notFoundHandler);
-
-// Use error handler at the end of the middleware stack
-app.use(errorHandler);
-
-const PORT = 3000;
-
-// Use mongoHandler to connect to mongodb database
-mongoHandler(
-  "mongodb://<username>:<password>@<host>:<port>/<database>?options",
-);
-// or
-// Use initPostgres to connect to postgres database and postgresHandler to make queries
-const pool = initPostgres({
-  connectionString: "postgres://<user>:<password>@<host>:<port>/<database>",
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
-// Use initRedis to connect with redis
-const client = initRedis({ url: "redis://<user>:<password>@<host>:<port>" });
-
-app.listen(PORT, async () => {
-  console.log(`Server running @ port ${PORT}`);
-});
+// Sample function simulating database fetch
+async function fetchDataFromDB() {
+  return { message: "Hello from the database!" };
+}
 ```
+
+This setup ensures your Express server is optimized for security, error handling, and performance.
 
 ## License
 

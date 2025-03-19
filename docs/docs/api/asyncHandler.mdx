@@ -1,0 +1,30 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function asyncHandler(fn: function)
+```
+
+<div>
+
+</div>
+
+Middleware to handle async route errors by passing them to Express error handler.
+
+**Returns**: function
+- Express middleware function that catches errors and passes them to `next()`.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|fn|function|||The async route handler function.|
+
+```js
+const express = require("express");
+
+app.get("/example", asyncHandler(async (req, res) => {
+  const data = await someAsyncOperation();
+  res.json(data);
+}));
+```
+

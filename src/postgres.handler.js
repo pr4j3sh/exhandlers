@@ -15,7 +15,9 @@ const { Pool } = require("pg");
  * @throws Will log an error and exit the process if the connection string is missing or the connection fails.
  *
  * @example
+ * ```js
  * const pool = initPostgres({ connectionString: "postgres://user:pass@localhost:5432/mydb" });
+ * ```
  */
 function initPostgres(config) {
   if (!config?.connectionString) {
@@ -49,8 +51,10 @@ function initPostgres(config) {
  * @returns {Promise<Object>} Query result object.
  *
  * @example
+ * ```js
  * const result = await postgresHandler(pool, "SELECT * FROM users WHERE id = $1", [1]);
  * console.log(result.rows);
+ * ```
  */
 async function postgresHandler(pool, text, params, callback) {
   return pool.query(text, params, callback);

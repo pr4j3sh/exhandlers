@@ -9,7 +9,6 @@ const {
   logHandler,
 } = require("./src/log.handler");
 const { mongoHandler } = require("./src/mongo.handler");
-const { uploadHandler } = require("./src/multer.handler");
 const { notFoundHandler } = require("./src/notFound.handler");
 const { hashHandler, passwordHandler } = require("./src/password.handler");
 const { initPostgres, postgresHandler } = require("./src/postgres.handler");
@@ -17,6 +16,7 @@ const { queueHandler } = require("./src/queue.handler");
 const { rateLimitHandler } = require("./src/rateLimit.handler");
 const { initRedis } = require("./src/redis.handler");
 const { socketHandler } = require("./src/socket.handler");
+const { uploadHandler } = require("./src/upload.handler");
 
 module.exports = {
   asyncHandler,
@@ -28,7 +28,6 @@ module.exports = {
   streamHandler,
   logHandler,
   mongoHandler,
-  uploadHandler,
   notFoundHandler,
   hashHandler,
   passwordHandler,
@@ -38,4 +37,5 @@ module.exports = {
   rateLimitHandler,
   initRedis,
   socketHandler,
+  uploadHandler,
 };

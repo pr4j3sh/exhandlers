@@ -1,0 +1,31 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function queueHandler(uri: string)
+```
+
+<div>
+  <span className="badge badge--success">async</span>
+</div>
+
+Establishes a connection to a RabbitMQ server.
+
+**Returns**: Promise&lt;Object&gt;
+- Resolves to a RabbitMQ connection instance.<br />  See the official amqplib package documentation for more details:
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|uri|string|||The AMQP server connection URI.|
+
+**Throws**: 
+
+Will log an error and exit the process if the connection fails.
+**See**:
+- [https://www.npmjs.com/package/amqplib](https://www.npmjs.com/package/amqplib)
+```js
+const conn = await queueHandler("amqp://localhost");
+const channel = await conn.createChannel();
+```
+

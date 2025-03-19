@@ -1,0 +1,35 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function corsHandler(allowedOrigins: string = "*", config: Object = {})
+```
+
+<div>
+
+</div>
+
+Middleware to handle Cross-Origin Resource Sharing (CORS).
+
+**Returns**: function
+- Express middleware function to handle CORS requests.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|allowedOrigins|string|✔️|"*"|Comma-separated list of allowed origins or "*" for all origins.|
+|config|Object|✔️|{}|Additional configuration options for CORS (excluding `origin`).<br />  See the official CORS package documentation for more details:|
+
+**See**:
+- [https://www.npmjs.com/package/cors](https://www.npmjs.com/package/cors)
+```js
+const express = require("express");
+
+const app = express();
+app.use(corsHandler("https://example.com,https://another.com", { optionsSuccessStatus: 200 }));
+
+app.get("/", (req, res) => {
+  res.json({ message: "CORS enabled" });
+});
+```
+

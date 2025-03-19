@@ -1,0 +1,29 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function notFoundHandler(req: Object, res: Object, next: function)
+```
+
+<div>
+
+</div>
+
+Sends a 404 response when no route matches the request.<br />  See the official express package documentation for more details:
+
+**Returns**: void
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|req|Object|||Express request object.|
+|res|Object|||Express response object.|
+|next|function|||Express next function.|
+
+**See**:
+- [https://expressjs.com/en/guide/error-handling.html](https://expressjs.com/en/guide/error-handling.html)
+```js
+const app = express();
+app.use(notFoundHandler);
+```
+

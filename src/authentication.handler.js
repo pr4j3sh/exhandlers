@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 /**
- * Middleware to authenticate requests using a JWT. Checks if "Bearer <token>" is included in authorization header.
+ * Middleware to authenticate requests using a JWT. Checks if `Bearer <token>` is included in authorization header.
  *
  * @function authenticationHandler
  * @param {string} secret - The secret key used to verify the JWT.
@@ -10,8 +10,8 @@ const jwt = require("jsonwebtoken");
  *   @see {@link https://www.npmjs.com/package/jsonwebtoken}
  *
  * @example
+ * ```js
  * const express = require("express");
- * const { authenticationHandler } = require("./authenticationHandler");
  *
  * const app = express();
  * const SECRET_KEY = "your_secret_key";
@@ -21,6 +21,7 @@ const jwt = require("jsonwebtoken");
  * app.get("/protected", (req, res) => {
  *   res.json({ message: "Access granted", user: req.user });
  * });
+ * ```
  */
 const authenticationHandler = (secret) => {
   return (req, res, next) => {

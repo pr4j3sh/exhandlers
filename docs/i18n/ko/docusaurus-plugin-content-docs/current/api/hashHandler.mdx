@@ -1,0 +1,28 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function hashHandler(password: string)
+```
+
+<div>
+  <span className="badge badge--success">async</span>
+</div>
+
+Hashes a password using bcrypt.
+
+**Returns**: Promise&lt;string&gt;
+- The hashed password.<br />  See the official bcrypt package documentation for more details:
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|password|string|||The plaintext password to hash.|
+
+**See**:
+- [https://www.npmjs.com/package/bcrypt](https://www.npmjs.com/package/bcrypt)
+```js
+const hashedPassword = await hashHandler("mySecurePassword");
+console.log(hashedPassword);
+```
+

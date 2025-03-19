@@ -1,0 +1,30 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function initLogger(level: string = "info", transports: Array&lt;winston.transport&gt; = [], config: Object = {})
+```
+
+<div>
+
+</div>
+
+Initializes a Winston logger instance.
+
+**Returns**: winston.Logger
+- Configured Winston logger instance.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|level|string|✔️|"info"|Logging level (e.g., "info", "error", "debug").|
+|transports|Array&lt;winston.transport&gt;|✔️|[]|List of Winston transports.<br />  Import the default transports and add your own using spread operator.|
+|config|Object|✔️|{}|Additional Winston logger options.<br />  See the official winston package documentation for more details:|
+
+**See**:
+- [https://www.npmjs.com/package/winston](https://www.npmjs.com/package/winston)
+```js
+const logger = initLogger("info", transports, { format: winston.format.json() });
+logger.info("Server started");
+```
+

@@ -13,6 +13,7 @@ const { Server } = require("socket.io");
  * @returns {Object} Configured Socket.IO server instance.
  *
  * @example
+ * ```js
  * const express = require("express");
  *
  * const app = express();
@@ -21,6 +22,7 @@ const { Server } = require("socket.io");
  * io.on("connection", (socket) => {
  *   console.log("A user connected");
  * });
+ * ```
  */
 const socketHandler = (app, config) => {
   const server = createServer(app);

@@ -11,8 +11,8 @@ const cors = require("cors");
  * @returns {Function} Express middleware function to handle CORS requests.
  *
  * @example
+ * ```js
  * const express = require("express");
- * const { corsHandler } = require("./corsHandler");
  *
  * const app = express();
  * app.use(corsHandler("https://example.com,https://another.com", { optionsSuccessStatus: 200 }));
@@ -20,6 +20,7 @@ const cors = require("cors");
  * app.get("/", (req, res) => {
  *   res.json({ message: "CORS enabled" });
  * });
+ * ```
  */
 const corsHandler = (allowedOrigins = "*", config = {}) => {
   const options = {

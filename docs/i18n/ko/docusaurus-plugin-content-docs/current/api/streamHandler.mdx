@@ -1,0 +1,26 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function streamHandler(logger: winston.Logger)
+```
+
+<div>
+
+</div>
+
+Creates a stream handler for integrating Winston with Morgan.
+
+**Returns**: Object
+- Stream object for Morgan.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|logger|winston.Logger|||Winston logger instance.|
+
+```js
+const logger = initLogger("info", transports);
+app.use(morgan("combined", { stream: streamHandler(logger) }));
+```
+

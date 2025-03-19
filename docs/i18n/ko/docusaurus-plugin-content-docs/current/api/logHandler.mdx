@@ -1,0 +1,29 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function logHandler(format: string = "combined", config: Object = {})
+```
+
+<div>
+
+</div>
+
+Middleware for logging HTTP requests using Morgan.
+
+**Returns**: function
+- Morgan middleware.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|format|string|✔️|"combined"|Morgan logging format.|
+|config|Object|✔️|{}|Additional Morgan configuration options.<br />  See the official morgan package documentation for more details:|
+
+**See**:
+- [https://www.npmjs.com/package/morgan](https://www.npmjs.com/package/morgan)
+```js
+const logger = initLogger("info", transports);
+app.use(logHandler("combined", { stream: streamHandler(logger)}));
+```
+

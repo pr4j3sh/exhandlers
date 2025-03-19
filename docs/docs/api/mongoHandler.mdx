@@ -1,0 +1,31 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function mongoHandler(uri: string, config: Object = {})
+```
+
+<div>
+  <span className="badge badge--success">async</span>
+</div>
+
+Connects to a MongoDB database using Mongoose.
+
+**Returns**: Promise&lt;void&gt;
+- Resolves when connected, exits process on failure.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|uri|string|||MongoDB connection URI.|
+|config|Object|✔️|{}|Additional Mongoose connection options.<br />  See the official mongoose package documentation for more details:|
+
+**Throws**: 
+
+Will log an error and exit the process if the connection fails.
+**See**:
+- [https://www.npmjs.com/package/mongoose](https://www.npmjs.com/package/mongoose)
+```js
+mongoHandler("mongodb://localhost:27017/mydb", { useNewUrlParser: true, useUnifiedTopology: true });
+```
+

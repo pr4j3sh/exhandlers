@@ -15,7 +15,9 @@ const { createClient } = require("redis");
  * @throws Will log an error and exit the process if the Redis URL is missing or the connection fails.
  *
  * @example
+ * ```js
  * const redisClient = initRedis({ url: "redis://localhost:6379" });
+ * ```
  */
 function initRedis(config) {
   if (!config?.url) {

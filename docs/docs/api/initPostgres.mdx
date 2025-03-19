@@ -1,0 +1,31 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function initPostgres(config: Object)
+```
+
+<div>
+
+</div>
+
+Initializes a PostgreSQL connection pool using `pg.Pool`.
+
+**Returns**: Pool
+- PostgreSQL connection pool instance.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|config|Object|||PostgreSQL configuration options.<br />  See the official pg package documentation for more details:|
+|config.connectionString|string|||Connection string for PostgreSQL.|
+
+**Throws**: 
+
+Will log an error and exit the process if the connection string is missing or the connection fails.
+**See**:
+- [https://node-postgres.com/apis/client#new-client](https://node-postgres.com/apis/client#new-client)
+```js
+const pool = initPostgres({ connectionString: "postgres://user:pass@localhost:5432/mydb" });
+```
+

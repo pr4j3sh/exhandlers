@@ -14,8 +14,10 @@ const { exit } = require("process");
  * @throws Will log an error and exit the process if the connection fails.
  *
  * @example
+ * ```js
  * const conn = await queueHandler("amqp://localhost");
  * const channel = await conn.createChannel();
+ * ```
  */
 const queueHandler = async (uri) => {
   try {

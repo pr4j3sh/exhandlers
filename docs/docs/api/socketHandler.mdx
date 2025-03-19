@@ -1,0 +1,35 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function socketHandler(app: Object, config: Object = {})
+```
+
+<div>
+
+</div>
+
+Initializes a Socket.IO server with an HTTP server.
+
+**Returns**: Object
+- Configured Socket.IO server instance.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|app|Object|||Express application instance.|
+|config|Object|✔️|{}|Socket.IO server configuration options.<br />  See the official socket.io package documentation for more details:|
+
+**See**:
+- [https://www.npmjs.com/package/socket.io](https://www.npmjs.com/package/socket.io)
+```js
+const express = require("express");
+
+const app = express();
+const io = socketHandler(app, { cors: { origin: "*" } });
+
+io.on("connection", (socket) => {
+  console.log("A user connected");
+});
+```
+

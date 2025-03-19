@@ -12,8 +12,10 @@
  *   @see {@link https://expressjs.com/en/guide/error-handling.html}
  *
  * @example
+ * ```js
  * const app = express();
  * app.use(errorHandler);
+ * ```
  */
 const errorHandler = (err, req, res, next) => {
   console.error(err.stack);

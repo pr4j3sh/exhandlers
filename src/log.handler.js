@@ -40,8 +40,10 @@ const transports = [
  * @returns {winston.Logger} Configured Winston logger instance.
  *
  * @example
+ * ```js
  * const logger = initLogger("info", transports, { format: winston.format.json() });
  * logger.info("Server started");
+ * ```
  */
 const initLogger = (level = "info", transports = [], config = {}) => {
   const logger = winston.createLogger({
@@ -60,8 +62,10 @@ const initLogger = (level = "info", transports = [], config = {}) => {
  * @returns {Object} Stream object for Morgan.
  *
  * @example
+ * ```js
  * const logger = initLogger("info", transports);
  * app.use(morgan("combined", { stream: streamHandler(logger) }));
+ * ```
  */
 const streamHandler = (logger) => {
   const stream = {
@@ -82,8 +86,10 @@ const streamHandler = (logger) => {
  * @returns {Function} Morgan middleware.
  *
  * @example
+ * ```js
  * const logger = initLogger("info", transports);
  * app.use(logHandler("combined", { stream: streamHandler(logger)}));
+ * ```
  */
 const logHandler = (format = "combined", config = {}) => {
   return morgan(format, config);

@@ -1,0 +1,36 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function authenticationHandler(secret: string)
+```
+
+<div>
+
+</div>
+
+Middleware to authenticate requests using a JWT. Checks if `Bearer <token>` is included in authorization header.
+
+**Returns**: function
+- Express middleware function that verifies the JWT and sets `req.user`.<br />  See the official jsonwebtoken package documentation for more details:
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|secret|string|||The secret key used to verify the JWT.|
+
+**See**:
+- [https://www.npmjs.com/package/jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+```js
+const express = require("express");
+
+const app = express();
+const SECRET_KEY = "your_secret_key";
+
+app.use("/protected", authenticationHandler(SECRET_KEY));
+
+app.get("/protected", (req, res) => {
+  res.json({ message: "Access granted", user: req.user });
+});
+```
+

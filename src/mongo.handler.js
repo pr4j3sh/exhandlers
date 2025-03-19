@@ -16,7 +16,9 @@ const mongoose = require("mongoose");
  * @throws Will log an error and exit the process if the connection fails.
  *
  * @example
+ * ```js
  * mongoHandler("mongodb://localhost:27017/mydb", { useNewUrlParser: true, useUnifiedTopology: true });
+ * ```
  */
 async function mongoHandler(uri, config = {}) {
   if (!uri) {

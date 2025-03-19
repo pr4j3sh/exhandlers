@@ -1,0 +1,30 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function uploadHandler(config: Object = {})
+```
+
+<div>
+
+</div>
+
+Creates a Multer instance for handling file uploads.
+
+**Returns**: multer.Multer
+- Configured Multer instance.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|config|Object|✔️|{}|Multer configuration options.<br />  See the official multer package documentation for more details:|
+
+**See**:
+- [https://www.npmjs.com/package/multer](https://www.npmjs.com/package/multer)
+```js
+const upload = uploadHandler({ dest: "uploads/" });
+app.post("/upload", upload.single("file"), (req, res) => {
+  res.json({ file: req.file });
+});
+```
+

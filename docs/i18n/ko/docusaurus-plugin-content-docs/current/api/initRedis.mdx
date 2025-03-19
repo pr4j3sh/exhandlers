@@ -1,0 +1,31 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function initRedis(config: Object)
+```
+
+<div>
+
+</div>
+
+Initializes a Redis client using the `redis` package.
+
+**Returns**: Object
+- Redis client instance.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|config|Object|||Redis configuration options.<br />  See the official redis package documentation for more details:|
+|config.url|string|||Redis connection URL.|
+
+**Throws**: 
+
+Will log an error and exit the process if the Redis URL is missing or the connection fails.
+**See**:
+- [https://www.npmjs.com/package/redis](https://www.npmjs.com/package/redis)
+```js
+const redisClient = initRedis({ url: "redis://localhost:6379" });
+```
+

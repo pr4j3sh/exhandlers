@@ -1,0 +1,28 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function rateLimitHandler(config: Object)
+```
+
+<div>
+
+</div>
+
+Creates an Express middleware for rate limiting.
+
+**Returns**: function
+- Express middleware for rate limiting.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|config|Object|||Configuration options for rate limiting.|
+
+```js
+const express = require("express");
+
+const app = express();
+app.use(rateLimitHandler({ windowMs: 15 * 60 * 1000, limit: 100 }));
+```
+

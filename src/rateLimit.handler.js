@@ -8,10 +8,12 @@ const rateLimit = require("express-rate-limit");
  * @returns {Function} Express middleware for rate limiting.
  *
  * @example
+ * ```js
  * const express = require("express");
  *
  * const app = express();
  * app.use(rateLimitHandler({ windowMs: 15 * 60 * 1000, limit: 100 }));
+ * ```
  */
 const rateLimitHandler = (config) => {
   const limiter = rateLimit(config);

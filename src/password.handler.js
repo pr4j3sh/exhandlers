@@ -11,8 +11,10 @@ const bcrypt = require("bcrypt");
  *   @see {@link https://www.npmjs.com/package/bcrypt}
  *
  * @example
+ * ```js
  * const hashedPassword = await hashHandler("mySecurePassword");
  * console.log(hashedPassword);
+ * ```
  */
 const hashHandler = async (password) => {
   const salt = await bcrypt.genSalt(10);
@@ -32,10 +34,12 @@ const hashHandler = async (password) => {
  *   @see {@link https://www.npmjs.com/package/bcrypt}
  *
  * @example
+ * ```js
  * const isMatch = await passwordHandler("myPassword", storedHashedPassword);
  * if (isMatch) {
  *   console.log("Password is correct");
  * }
+ * ```
  */
 const passwordHandler = async (password, hashedPassword) => {
   const passwordMatch = await bcrypt.compare(password, hashedPassword);
