@@ -1,7 +1,7 @@
 {
   "name": "exhandlers",
   "description": "Utility middlewares for working with ExpressJs",
-  "version": "1.0.23",
+  "version": "1.1.0",
   "main": "dist/bundle.js",
   "scripts": {
     "test": "echo \"Running tests...\" && exit 0",
@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/pr4j3sh/exhandlers/issues"
   },
-  "homepage": "https://github.com/pr4j3sh/exhandlers#readme",
+  "homepage": "https://pr4j3sh.github.io/exhandlers/",
   "dependencies": {
     "amqplib": "^0.10.5",
     "bcrypt": "^5.1.1",

@@ -34,3 +34,5 @@ By integrating `exhandlers`, developers can eliminate the need to write common h
 - **Upload Handler** – Manages file uploads efficiently.
 - **Socket Handler** – Handles WebSocket connections for real-time data exchange.
 - **AMQP Handler** – Facilitates message queue communication using AMQP (e.g., RabbitMQ).
+
+> View [API Reference](https://pr4j3sh.github.io/exhandlers/docs/api/asyncHandler) of all handlers to know their usage.
