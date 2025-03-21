@@ -13,15 +13,12 @@ const jwt = require("jsonwebtoken");
  *
  * @example
  * ```js
- * const { tokenHandler } = require("./tokenHandler");
- * tokenHandler({ userId: 123 }, "mySecret", { expiresIn: "1h" })
- *   .then(token => console.log(token))
- *   .catch(err => console.error(err));
+ * const token = await tokenHandler({ userId: 123 }, "mySecret", { expiresIn: "1h" });
  * ```
  */
 const tokenHandler = async (payload = {}, secret, args = {}) => {
   return new Promise((resolve, reject) => {
-    jwt.sign(payload, secret, args, (token, err) => {
+    jwt.sign(payload, secret, args, (err, token) => {
       if (err) reject(err);
       else resolve(token);
     });

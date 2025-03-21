@@ -24,9 +24,6 @@ Asynchronously generates a JSON Web Token (JWT).<br />  See the official jsonweb
 **See**:
 - [https://www.npmjs.com/package/jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 ```js
-const { tokenHandler } = require("./tokenHandler");
-tokenHandler({ userId: 123 }, "mySecret", { expiresIn: "1h" })
-  .then(token => console.log(token))
-  .catch(err => console.error(err));
+const token = await tokenHandler({ userId: 123 }, "mySecret", { expiresIn: "1h" });
 ```
 
