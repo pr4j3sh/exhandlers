@@ -1,7 +1,7 @@
 {
   "name": "exhandlers",
   "description": "Utility middlewares for working with ExpressJs",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "dist/bundle.js",
   "scripts": {
     "test": "echo \"Running tests...\" && exit 0",

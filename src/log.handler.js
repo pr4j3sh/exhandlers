@@ -4,7 +4,6 @@ const winston = require("winston");
 /**
  * Winston transport configurations for logging.
  * - Console: Logs messages to the console in a formatted manner.
- * - File: Logs messages in JSON format to `logs/server.log`.
  *
  * @constant {winston.transport[]}
  */
@@ -15,13 +14,6 @@ const transports = [
       winston.format.printf(({ timestamp, level, message }) => {
         return `${timestamp} ${level.toUpperCase()}: ${message}`;
       }),
-    ),
-  }),
-  new winston.transports.File({
-    filename: "logs/server.log",
-    format: winston.format.combine(
-      winston.format.timestamp(),
-      winston.format.json(),
     ),
   }),
 ];
