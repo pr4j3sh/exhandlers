@@ -16,6 +16,7 @@ const { queueHandler } = require("./src/queue.handler");
 const { rateLimitHandler } = require("./src/rateLimit.handler");
 const { initRedis } = require("./src/redis.handler");
 const { socketHandler } = require("./src/socket.handler");
+const { tokenHandler } = require("./src/token.handler");
 const { uploadHandler } = require("./src/upload.handler");
 
 module.exports = {
@@ -37,5 +38,6 @@ module.exports = {
   rateLimitHandler,
   initRedis,
   socketHandler,
+  tokenHandler,
   uploadHandler,
 };
