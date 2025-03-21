@@ -19,7 +19,6 @@ module.exports = {
         "api/streamHandler",
         "api/logHandler",
         "api/mongoHandler",
-        "api/uploadHandler",
         "api/notFoundHandler",
         "api/hashHandler",
         "api/passwordHandler",
@@ -28,7 +27,9 @@ module.exports = {
         "api/queueHandler",
         "api/rateLimitHandler",
         "api/initRedis",
-        "api/socketHandler"
+        "api/socketHandler",
+        "api/tokenHandler",
+        "api/uploadHandler"
       ]
     }
   ]

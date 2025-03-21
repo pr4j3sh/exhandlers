@@ -22,6 +22,7 @@ By integrating `exhandlers`, developers can eliminate the need to write common h
 - **Logs Handler** – Structured logging for application monitoring.
 - **Rate Limiting Handler** – Protects APIs from excessive requests.
 - **Password Handler** – Utility functions for password hashing and validation.
+- **Token Handler** – Utility function for password hashing and validation.
 
 ### Database Handlers
 

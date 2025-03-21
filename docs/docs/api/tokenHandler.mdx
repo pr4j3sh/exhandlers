@@ -1,0 +1,31 @@
+---
+custom_edit_url: null
+---
+
+```ts
+function tokenHandler(payload: Object, secret: string, args: Object = {})
+```
+
+<div>
+
+</div>
+
+Generates a JSON Web Token (JWT).<br />  See the official jsonwebtoken package documentation for more details:
+
+**Returns**: string
+- The generated JWT.
+
+|PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
+|:---:|:---:|:---:|:---:|:---:|
+|payload|Object|||The payload to encode in the token.|
+|secret|string|||The secret key used to sign the token.|
+|args|Object|✔️|{}|Additional options for the JWT (e.g., expiresIn).|
+
+**See**:
+- [https://www.npmjs.com/package/jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+```js
+const { tokenHandler } = require("./tokenHandler");
+const token = tokenHandler({ userId: 123 }, "mySecret", { expiresIn: "1h" });
+console.log(token);
+```
+

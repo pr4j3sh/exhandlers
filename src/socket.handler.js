@@ -22,7 +22,6 @@ const { Server } = require("socket.io");
  * io.on("connection", (socket) => {
  *   console.log("A user connected");
  * });
- * ```
  */
 const socketHandler = (app, config) => {
   const server = createServer(app);
