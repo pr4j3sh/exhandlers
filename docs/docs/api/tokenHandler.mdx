@@ -10,10 +10,10 @@ function tokenHandler(payload: Object, secret: string, args: Object = {})
 
 </div>
 
-Generates a JSON Web Token (JWT).<br />  See the official jsonwebtoken package documentation for more details:
+Asynchronously generates a JSON Web Token (JWT).<br />  See the official jsonwebtoken package documentation for more details:
 
-**Returns**: string
-- The generated JWT.
+**Returns**: Promise&lt;string&gt;
+- A promise that resolves to the generated JWT.
 
 |PARAMETER|TYPE|OPTIONAL|DEFAULT|DESCRIPTION|
 |:---:|:---:|:---:|:---:|:---:|
@@ -25,7 +25,8 @@ Generates a JSON Web Token (JWT).<br />  See the official jsonwebtoken package d
 - [https://www.npmjs.com/package/jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 ```js
 const { tokenHandler } = require("./tokenHandler");
-const token = tokenHandler({ userId: 123 }, "mySecret", { expiresIn: "1h" });
-console.log(token);
+tokenHandler({ userId: 123 }, "mySecret", { expiresIn: "1h" })
+  .then(token => console.log(token))
+  .catch(err => console.error(err));
 ```
 
