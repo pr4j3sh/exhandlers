@@ -1,41 +1,10 @@
-# Website
+# exhandlers Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+`exhandlers` is a comprehensive collection of middleware and handler functions designed to streamline backend development in Express.js. It provides pre-built utilities for handling databases, WebSocket connections, AMQP connections, logging, and various other essential middleware functionalities.
 
-### Installation
+By integrating `exhandlers`, developers can eliminate the need to write common handlers from scratch, thereby reducing development overhead and ensuring a cleaner, more maintainable codebase.
 
-```
-$ yarn
-```
+## References
 
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+- [jsdoc](https://jsdoc.app/)
+- [jsdoc-to-mdx](https://naver.github.io/jsdoc-to-mdx/)
