@@ -81,6 +81,11 @@ const config = {
             label: "API Reference",
           },
           {
+            href: "https://www.npmjs.com/package/exhandlers",
+            label: "Download",
+            position: "right",
+          },
+          {
             href: "https://github.com/pr4j3sh/exhandlers",
             label: "GitHub",
             position: "right",
